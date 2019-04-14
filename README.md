@@ -31,3 +31,6 @@ Now you can use meaningful-forks on any github page. To test this, go to the [fo
 
 ## Credits
 Inspired by [lovely-forks](https://github.com/musically-ut/lovely-forks/) by Utkarsh Upadhyay.
+
+## License
+This project is licensed under the terms of the MIT license.
