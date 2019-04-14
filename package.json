@@ -1,0 +1,25 @@
+{
+  "name": "meaningful-forks",
+  "version": "1.0.0",
+  "description": "Sort forks by number of stars and number of commits ahead",
+  "main": "dist/script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fork",
+    "github",
+    "sort",
+    "star"
+  ],
+  "author": "Kevin Li <kevinli020508@gmail.com> (https://github.com/AlienKevin)",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^4.1.0",
+    "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "pump": "^3.0.0",
+    "uglify-es": "^3.3.9"
+  }
+}
