@@ -9,9 +9,23 @@
 // ==/UserScript==
 
 (async function () {
+    // NOTE: Do NOT release key with source
+    const accessToken = "f9765ac063fb541c632e7baec5bc91f0db0738dc"
+    
+    // Show loading gif while sorting forks
+    const loading = document.createElement("span");
+    loading.innerText = "Sorting 🍴forks...";
+    loading.style.position = "fixed";
+    loading.style.background = "#22f922";
+    loading.style.padding = "10px";
+    loading.style.borderRadius = "10px";
+    loading.style.zIndex = "9999";
+    // must put whitespace around "-", see here: https://stackoverflow.com/questions/34419813/why-must-a-or-be-surrounded-with-whitespace-from-within-the-calc-method
+    loading.style.left = "calc(50% - 60px)";
+    loading.style.top = "calc(50% - 20px)";
+    document.body.appendChild(loading);
+
     function processUrl(url) {
-        // NOTE: Do NOT release key with source
-        const accessToken = "f9765ac063fb541c632e7baec5bc91f0db0738dc"
         if (url.indexOf("?") < 0) {
             return `${url}?access_token=${accessToken}`;
         } else {
@@ -186,6 +200,10 @@
 
             addStatus(repo);
         }
+
+        // Finished sorting
+        // remove loading gif
+        loading.remove();
 
         function addStatus(repo) {
             const repoDocumentFragment = document.createDocumentFragment();
