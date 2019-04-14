@@ -1,7 +1,7 @@
 # meaningful-forks
 Sort Github fork lists by the number of stars and commits ahead from the source repo. 
 
-![Angular forks](./demos/angular-forks.png)
+![Angular forks](https://raw.githubusercontent.com/AlienKevin/meaningful-forks/master/demos/angular-forks.PNG)
 
 ## Features
 * Sort forks according to the number of effective stars (excluding fork author's own star)
