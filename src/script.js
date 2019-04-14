@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Github Fork Page Redesigned
+//@name          meaningful-forks
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Log 'hello world' into console.
+// @description  Sort Github fork lists by the number of stars and commits ahead from the source repo.
 // @author       Kevin Li
-// @match        https://github.com/*
+// @match        https://github.com/*/network/members
 // @grant        none
 // ==/UserScript==
 
