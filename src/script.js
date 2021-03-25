@@ -35,7 +35,7 @@
     const network = document.querySelector("#network");
 
     // like: musically-ut/lovely-forks
-    const sourceRepoName = network.querySelector("span.current-repository").lastElementChild.getAttribute("href").substring(1);
+    const sourceRepoName = network.firstElementChild.lastElementChild.getAttribute("href").substring(1);
     console.log("TCL: currentRepoUrl", sourceRepoName);
     const sourceAuthorName = sourceRepoName.substring(0, sourceRepoName.lastIndexOf("/"));
     // like: https://api.github.com/repos/GhettoSanta/lovely-forks/forks?sort=stargazers
