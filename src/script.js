@@ -28,10 +28,12 @@
     function processUrl(url) {
         return url;
     }
-    const network = document.querySelector("#network");
+    
+    const repoContent = document.querySelector('#repo-content-pjax-container');
+    const network = repoContent.querySelector('.Layout-main');
 
     // like: musically-ut/lovely-forks
-    const sourceRepoName = network.firstElementChild.lastElementChild.getAttribute("href").substring(1);
+    const sourceRepoName = document.querySelector("meta[name=\"octolytics-dimension-repository_nwo\"]").getAttribute("content");
     console.log("TCL: currentRepoUrl", sourceRepoName);
     const sourceAuthorName = sourceRepoName.substring(0, sourceRepoName.lastIndexOf("/"));
     // like: https://api.github.com/repos/GhettoSanta/lovely-forks/forks?sort=stargazers
