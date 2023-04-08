@@ -10,7 +10,7 @@
 
 (async function () {
     // NOTE: Do NOT release key with source
-    const accessToken = "f9765ac063fb541c632e7baec5bc91f0db0738dc"
+    const accessToken = window.prompt("insert the github token");
     
     // Show loading gif while sorting forks
     const loading = document.createElement("span");
@@ -26,22 +26,25 @@
     document.body.appendChild(loading);
 
     function processUrl(url) {
-        if (url.indexOf("?") < 0) {
-            return `${url}?access_token=${accessToken}`;
-        } else {
-            return `${url}&access_token=${accessToken}`;
-        }
+        return url;
     }
-    const network = document.querySelector("#network");
+    
+    const repoContent = document.querySelector('#repo-content-pjax-container');
+    const network = repoContent.querySelector('.Layout-main');
 
     // like: musically-ut/lovely-forks
-    const sourceRepoName = network.querySelector("span.current-repository").lastElementChild.getAttribute("href").substring(1);
+    const sourceRepoName = document.querySelector("meta[name=\"octolytics-dimension-repository_nwo\"]").getAttribute("content");
     console.log("TCL: currentRepoUrl", sourceRepoName);
     const sourceAuthorName = sourceRepoName.substring(0, sourceRepoName.lastIndexOf("/"));
     // like: https://api.github.com/repos/GhettoSanta/lovely-forks/forks?sort=stargazers
     const forkApiUrl = processUrl(`https://api.github.com/repos/${sourceRepoName}/forks?sort=stargazers`);
     console.log("TCL: forkApiUrl", forkApiUrl)
-    let data = await fetch(forkApiUrl);
+    let data = await fetch(forkApiUrl,{
+        method: 'get', 
+        headers: new Headers({
+            'Authorization': `Bearer ${accessToken}`,
+        })
+    })
     const forks = await data.json();
     // console.log("TCL: forks", forks.filter(fork => fork.owner.type === "Organization"));
     forks.forEach(fork => {
@@ -225,7 +228,12 @@
 
     async function getFromApi(url, properties) {
         let json;
-        let data = await fetch(url);
+        let data = await fetch(url,{
+                method: 'get', 
+                headers: new Headers({
+                    'Authorization': `Bearer ${accessToken}`,
+                })
+        })
         if (data.ok) {
             json = await data.json();
         } else {
